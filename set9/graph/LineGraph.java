@@ -13,8 +13,8 @@ public class LineGraph extends GraphicsProgram {
 
 	public void run() {
 
-		setSize(600, 300);
-		validate();
+//		setSize(600, 300);
+//		validate();
 		double[] values = new double[] { 1, 4, 8, 7, 5, 7, 2, 9 };
 		double[] values2 = new double[] { 10, 3, 1, 4, 8, 7, 5, 7, 2, 9 };
 		Color color = new Color(255, 0, 0);

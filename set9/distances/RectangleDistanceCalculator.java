@@ -8,7 +8,7 @@ public class RectangleDistanceCalculator {
 
 		RectangleDistanceCalculator instance = new RectangleDistanceCalculator();
 
-		Rectangle2D.Double[] rects = new Rectangle2D.Double[2];
+		Rectangle2D.Double[] rects = new Rectangle2D.Double[4];
 
 		rects = generateRectangles(rects);
 
@@ -17,7 +17,7 @@ public class RectangleDistanceCalculator {
 
 		double mininmalDistance = instance.minDistance(rects);
 
-		System.out.println("Kleinste Entfernung zweiter Rechtecke: " + mininmalDistance + "LE");
+		System.out.println("Kleinste Entfernung zweier Rechtecke: " + mininmalDistance + "LE");
 	}
 
 	/**
@@ -29,7 +29,9 @@ public class RectangleDistanceCalculator {
 	private static Rectangle2D.Double[] generateRectangles(Rectangle2D.Double[] array) {
 
 		array[0] = new Rectangle2D.Double(0, 0, 10, 10);
-		array[1] = new Rectangle2D.Double(30, 30, 20, 20);
+		array[2] = new Rectangle2D.Double(30, 30, 20, 20);
+		array[1] = new Rectangle2D.Double(100, 100, 10, 10);
+		array[3] = new Rectangle2D.Double(100, 100, 20, 20);
 
 		return array;
 	}
@@ -76,6 +78,8 @@ public class RectangleDistanceCalculator {
 		for (int i = 0; i < rectangles.length - 1; i++) {
 			for (int j = i + 1; j < rectangles.length; j++) {
 				double minDistPair = pairDist(rectsCorners[i], rectsCorners[j], rectangles[i], rectangles[j]);
+				// Erst einen Wert für minDist setzen, ansonsten vergleichen, ob
+				// der neue kleiner ist, als der alte
 				if (minDist == -1) {
 					minDist = minDistPair;
 				}
@@ -196,7 +200,7 @@ public class RectangleDistanceCalculator {
 		}
 
 		// Das zweite Rechteck ist mit der naheliegenden Seite länger, als die
-		// parallel verlaufende Seite des ersten Rechtecks. Beim aufruf dieser
+		// parallel verlaufende Seite des ersten Rechtecks. Beim Aufruf dieser
 		// Funktion liegt somit ein Punkt des ersten Rechtecks neben einer Seite
 		// des zweiten Rechtecks und liefert einen Wert zurück
 		double switched = pairDist(pointsRect2, pointsRect1, rect2, rect1);
